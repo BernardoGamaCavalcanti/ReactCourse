@@ -7,6 +7,9 @@ import ConditionalRenderinSimple from './Components/ConditionalRenderinSimple';
 import ConditionalRenderingTernario from './Components/ConditionalRenderingTernario';
 import ComponentWithProp from './Components/ComponentWithProp';
 import DestructuringProps from './Components/DestructuringProps';
+import Fragment from './Components/Fragment';
+import Container from './Components/Container';
+import ExecuteFunction from './Components/ExecuteFunction';
 
 
 function App() {
@@ -16,11 +19,15 @@ function App() {
   }
 
   const cars = [
-    {id: 1, marca: "Ferrari", cor: "Vermelho", km: 0},
-    {id: 2, marca: "Mazda", cor: "Prata", km: 100},
-    {id: 3, marca: "Fiat", cor: "Branco", km: 100000},
-    {id: 4, marca: "Gol", cor: "Verde", km: 200000}
+    {id: 1, marca: "Ferrari", ano: 1990, cor: "Vermelho", km: 0,      velho: false},
+    {id: 2, marca: "Mazda",   ano: 1965, cor: "Prata",    km: 100,    velho: true},
+    {id: 3, marca: "Fiat",    ano: 1972, cor: "Branco",   km: 100000, velho: true},
+    {id: 4, marca: "Gol",     ano: 1986, cor: "Verde",    km: 200000, velho: false}
   ]
+
+  function reloadPage() {
+    window.location.reload()
+  }
   
   return (
     <div>
@@ -49,8 +56,21 @@ function App() {
     <hr />
     <h1>Modo mais correto de imprimir listas - Loop em Array de Obj</h1>
     {cars.map((car) => (
-      <DestructuringProps marca={car.marca} cor={car.cor} km={car.km}         />
+      <DestructuringProps id={car.id} marca={car.marca} cor={car.cor} km={car.km} velho={car.velho}/>
     ))}
+    <br />
+    <hr />
+    <Fragment fraProp="Testando as props"/>
+    <br />
+    <hr />
+    <Container>
+      {/*A prop children é usada quando um componente precisa ter JSX dentro dele sendo escrito no app principal*/}
+      <p>Testando o container</p>
+    </Container>
+    <br />
+    <hr />
+    <ExecuteFunction MyFunction={reloadPage}/>
+
     </div>
   );
   

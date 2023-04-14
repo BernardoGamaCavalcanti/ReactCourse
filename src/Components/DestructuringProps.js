@@ -15,7 +15,7 @@ const DestructuringProps = ({marca, ano, cor, velho, km}) => {
           <li>Km: {km} </li>
           <li>Velho: {velho === true ? (<p>Sim</p>) : (<p>Não</p>)}</li>
         </ul>
-        </div>
+    </div>
   )
 }
 
